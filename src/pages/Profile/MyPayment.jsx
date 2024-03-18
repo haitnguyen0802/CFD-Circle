@@ -1,18 +1,28 @@
+import React from "react";
+import { useAuthContext } from "../../components/context/AuthContext";
+import { formatCurrency, formatDate } from "../../utils/format";
+
 const MyPayment = () => {
+  const { paymentInfo } = useAuthContext();
+
   return (
     <div className="tab__content-item" style={{ display: "block" }}>
-      <div className="itemhistory">
-        <div className="name">Frontend Newbie</div>
-        <div className="payment">Chuyển khoản</div>
-        <div className="date">05/01/2022</div>
-        <div className="money">4.500.000 VND</div>
-      </div>
-      <div className="itemhistory">
-        <div className="name">Web Responsive</div>
-        <div className="payment">Tiền mặt</div>
-        <div className="date">14/07/2022</div>
-        <div className="money">4.900.000 VND</div>
-      </div>
+      {!!!paymentInfo.length && <p>Không có dữ liệu.</p>}
+      {!!paymentInfo.length &&
+        paymentInfo.map((item, index) => {
+          const { id, name, paymentMethod, createdAt, course } = item;
+          return (
+            <div
+              key={id || new Date().getTime() + index}
+              className="itemhistory"
+            >
+              <div className="name">{name}</div>
+              <div className="payment">{paymentMethod}</div>
+              <div className="date">{formatDate(createdAt)}</div>
+              <div className="money">{formatCurrency(course?.price)} VND</div>
+            </div>
+          );
+        })}
     </div>
   );
 };
