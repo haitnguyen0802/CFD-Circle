@@ -15,11 +15,19 @@ const Blog = () => {
     data: blogsData,
     loading: blogsLoading,
     execute: getBlogCategory,
+    setData,
   } = useMutation((query) => blogService.getBlogs(query));
   const loadingDebounce = useDebounce(blogsLoading, 300);
   const blogs = blogsData?.blogs || [];
   useEffect(() => {
-    getBlogCategory(query);
+    getBlogCategory(query, {
+      onFail: (error) => {
+        console.log('error', error)
+        if (error?.response?.status == 404) {
+          setData([]);
+        }
+      },
+    });
   }, [query]);
 
   return (

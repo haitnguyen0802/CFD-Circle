@@ -23,6 +23,7 @@ const useMutation = (promise) => {
     return {
         execute,
         data,
+        setData,
         loading,
         error
     }

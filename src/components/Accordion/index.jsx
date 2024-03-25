@@ -4,26 +4,6 @@ import { useState } from "react";
 
 const Accordion = ({ label = "", data = [], defaultActiveIndex = -1 }) => {
   const [activeIndex, setActiveIndex] = useState(defaultActiveIndex);
-  //   useEffect(() => {
-  //     function accordion() {
-  //       $(document).on(
-  //         "click",
-  //         ".accordion .accordion__content-title",
-  //         function () {
-  //           $(this).next().stop().slideToggle(200);
-  //           $(this).closest(".accordion__content").toggleClass("active");
-  //           $(this)
-  //             .closest(".accordion__content")
-  //             .siblings(".active")
-  //             .removeClass("active")
-  //             .find(".accordion__content-text")
-  //             .stop()
-  //             .slideUp(200);
-  //         }
-  //       );
-  //     }
-  //     accordion();
-  //   }, []);
 
   return (
     <div className="accordion">
