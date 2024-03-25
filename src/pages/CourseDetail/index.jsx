@@ -10,10 +10,10 @@ import { questionService } from "../../services/QuestionService";
 import { formatCurrency, formatDate } from "../../utils/format";
 import FaqSection from "../HomePage/FaqSection";
 import ContentDetailSection from "./ContentDetailSection";
+import CoursesSection from "./CourseSection";
 import FeaturedSection from "./FeaturedSection";
 import HeaderTop from "./HeaderTop";
 import HeroSection from "./HeroSection";
-import CoursesSection from "./CourseSection";
 
 const CourseDetail = () => {
   const params = useParams();
@@ -29,7 +29,7 @@ const CourseDetail = () => {
     loading: courseDetailLoading,
     execute,
   } = useMutation(courseService.getCourseBySlug);
-  
+  console.log('courseDetailData', courseDetailData)
   useEffect(() => {
     if (courseSlug) execute(courseSlug || "", {});
   }, [courseSlug]);
@@ -52,19 +52,27 @@ const CourseDetail = () => {
   const pageLoading = useDebounce(apiLoading, 500);
 
   if (pageLoading) {
-    return <ComponentLoading />;
+    return (
+      <div id={"thai-" + new Date().getTime()}>
+        <ComponentLoading />
+      </div>
+    );
   }
   return (
-    <>
+    <div id={"course-detail" + new Date().getTime()}>
       <HeaderTop {...modifiedProps} />
       <main className="mainwrapper coursedetailpage">
         <HeroSection {...modifiedProps} />
         <ContentDetailSection {...modifiedProps} />
         <FeaturedSection {...modifiedProps} />
-        <FaqSection questions={questions} loading={questionLoading}/>
-        <CoursesSection courses={courses} loading={courseLoading} courseDetailId={courseDetailData?.id} />
+        <FaqSection questions={questions} loading={questionLoading} />
+        <CoursesSection
+          courses={courses}
+          loading={courseLoading}
+          courseDetailId={courseDetailData?.id}
+        />
       </main>
-    </>
+    </div>
   );
 };
 

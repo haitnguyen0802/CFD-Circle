@@ -16,7 +16,7 @@ const MyPayment = () => {
               key={id || new Date().getTime() + index}
               className="itemhistory"
             >
-              <div className="name">{name}</div>
+              <div className="name">{course?.name}</div>
               <div className="payment">{paymentMethod}</div>
               <div className="date">{formatDate(createdAt)}</div>
               <div className="money">{formatCurrency(course?.price)} VND</div>

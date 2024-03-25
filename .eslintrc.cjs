@@ -20,6 +20,7 @@ module.exports = {
     'no-useless-escape' : 'off',
     'react/prop-types':'off',
     'react/display-name':'off',
+    'no-undef':'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

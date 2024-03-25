@@ -17,7 +17,6 @@ import PaymentOrder from "./PaymentOrder";
 const CourseOrder = () => {
   const { courseSlug } = useParams();
   const navigate = useNavigate();
-
   //Hanle payment Method change
   const [paymentMethod, setPaymentMethod] = useState("");
   const handlePaymentMethodChange = (payment) => {
@@ -26,7 +25,6 @@ const CourseOrder = () => {
   const { data: courseDetailData, execute: executeCourseDetail } = useMutation(
     courseService.getCourseBySlug
   );
-
   const {
     profile,
     courseInfo,
@@ -51,7 +49,7 @@ const CourseOrder = () => {
       type: alreadyOrderInfo?.type || "",
     }));
   }, [alreadyOrderInfo]);
-  console.log('alreadyOrderInfo', alreadyOrderInfo)
+  console.log("alreadyOrderInfo", alreadyOrderInfo);
   const _onOrder = () => {
     event.preventDefault();
 

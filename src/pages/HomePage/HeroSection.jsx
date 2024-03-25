@@ -1,3 +1,6 @@
+import Button from "../../components/Button";
+import PATHS from "../../constants/paths";
+
 const HeroSection = () => {
   return (
     <section className="hero">
@@ -10,9 +13,9 @@ const HeroSection = () => {
           <p className="text">
             Dạy từ kinh nghiệm, học từ thực tế để tạo ra sản phẩm có giá trị.
           </p>
-          <div className="btn btn--primary btnmodal" data-modal="mdlogin">
+          <Button variant="primary" link={PATHS.COURSE.INDEX} className="btnmodal" data-modal="mdlogin">
             Bắt đầu học
-          </div>
+          </Button>
         </div>
       </div>
       <div className="hero__bottom">

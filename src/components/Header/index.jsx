@@ -9,7 +9,7 @@ import PATHS from "../../constants/paths";
 const Header = () => {
   const {pathname} = useLocation();
   const { isShowNavbar, handleShowNavbar } = useMainContext();
-  const isTransparent = [PATHS.HOME, PATHS.ABOUT].includes(pathname)
+  const isTransparent = [PATHS.HOME, PATHS.ABOUT, PATHS.BLOG].includes(pathname)
   useEffect(() => {
     function setBgHeader(scrollY) {
       let header = $("header");

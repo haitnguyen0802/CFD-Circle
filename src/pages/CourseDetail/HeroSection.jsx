@@ -33,7 +33,7 @@ const HeroSection = ({
             </div>
             <div className="infor__item">
               <label className="label --white">Hình thức</label>
-              <p className="title --t3 --white">{tags}</p>
+              <p className="title --t3 --white">{tags.join(" | ")}</p>
             </div>
           </div>
           {/* Chưa đăng ký */}

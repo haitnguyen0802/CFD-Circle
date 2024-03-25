@@ -46,6 +46,8 @@ const AuthContextProvider = ({ children }) => {
       if (!!tokenMethod) {
         //Lấy thông tin profile
         handleGetProfile();
+        handleGetProfileCourse();
+        handleGetProfilePayment();
         //Thông báo
         message.success("Đăng nhập thành công");
 
