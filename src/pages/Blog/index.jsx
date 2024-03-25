@@ -30,6 +30,10 @@ const Blog = () => {
     });
   }, [query]);
 
+  useEffect(() => {
+    getBlogCategory(query);
+  }, [query]);
+
   return (
     <>
       <main className="mainwrapper blog --ptop">
