@@ -1,6 +1,5 @@
-import React from "react";
-import { STORAGE } from "../constants/storage";
 import Cookies from "js-cookie";
+import { STORAGE } from "../constants/storage";
 
 export const localToken = {
   get: () => JSON.parse(localStorage.getItem(STORAGE.token)),

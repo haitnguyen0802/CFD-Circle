@@ -22,16 +22,11 @@ const Blog = () => {
   useEffect(() => {
     getBlogCategory(query, {
       onFail: (error) => {
-        console.log('error', error)
         if (error?.response?.status == 404) {
           setData([]);
         }
       },
     });
-  }, [query]);
-
-  useEffect(() => {
-    getBlogCategory(query);
   }, [query]);
 
   return (

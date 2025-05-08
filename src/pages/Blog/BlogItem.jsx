@@ -11,32 +11,37 @@ const BlogItem = ({
   createdAt,
   image,
   category,
-  blog,
+  error,
 }) => {
   return (
     <>
-      <div className="blog__list-item">
-        <div className="img">
-          <Link to={`${PATHS.BLOG.INDEX}/${slug}`}>
-            <img src={image || ""} alt={name} className="course__thumbnail" />
-          </Link>
-        </div>
-        <div className="content">
-          <p className="label">{category?.name}</p>
-          <h2 className="title --t3">
-            <Link to={`${PATHS.BLOG.INDEX}/${slug}`}>{name}</Link>
-          </h2>
-          <div className="content__info">
-            <div className="user">
-              <div className="user__img">
-                <img src="img/avatar_nghia.jpg" alt="Avatar teacher" />
+      {!error?.response?.status != 404 && (
+        <div className="blog__list-item">
+          <div className="img">
+            <Link to={`${PATHS.BLOG.INDEX}/${slug}`}>
+              <img src={image || ""} alt={name} className="course__thumbnail" />
+            </Link>
+          </div>
+          <div className="content">
+            <p className="label">{category?.name}</p>
+            <h2 className="title --t3">
+              <Link to={`${PATHS.BLOG.INDEX}/${slug}`}>{name}</Link>
+            </h2>
+            <div className="content__info">
+              <div className="user">
+                <div className="user__img">
+                  <img src="img/avatar_nghia.jpg" alt="Avatar teacher" />
+                </div>
+                <p className="user__name">{author}</p>
               </div>
-              <p className="user__name">{author}</p>
+              <div className="date">{formatDate(createdAt)}</div>
             </div>
-            <div className="date">{formatDate(createdAt)}</div>
           </div>
         </div>
-      </div>
+      )}
+      {!error?.response?.status == 404 && (
+        <Empty description="Không có gì hết trơn." />
+      )}
     </>
   );
 };
